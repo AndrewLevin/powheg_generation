@@ -67,7 +67,7 @@ manyseeds  1       ! Used to perform multiple runs with different random
                    ! sequence for the generation of the event.
                    ! The event file is called pwgevents-'j'.lhe
 
-fakevirt 1
+#fakevirt 1
 
 withnegweights 1
 
