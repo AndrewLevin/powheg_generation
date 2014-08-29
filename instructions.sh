@@ -15,6 +15,7 @@ cp ../../../powheg.input.step3 powheg.input
 # it will prompt you to "enter which seed"
 #enter 1 and press enter
 cp ../../../powheg.input.step4 powheg.input
+#maybe change the number of events from 100000 to something smaller
 ../pwhg_main
 # it will prompt you to "enter which seed"
 #enter 1 and press enter
