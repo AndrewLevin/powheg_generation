@@ -36,8 +36,8 @@ i=1
 while((i<=n_jobs)); do
 	cat > submit.cmd <<EOF
 universe = vanilla
-Executable = /scratch5/anlevin/powheg_generation/vbf_wp_wp/run_pwhg_main.sh
-Arguments = "$i"
+Executable = `pwd`/run_pwhg_main.sh
+Arguments = "$i `pwd`/CMSSW_7_1_14/src/POWHEG-BOX/vbf_wp_wp/testrun/"
 GetEnv = True
 Requirements = (Arch == "X86_64") && (OpSys == "LINUX") && (HasFileTransfer) && (OpSysAndVer == "SL6")
 Should_Transfer_Files = YES

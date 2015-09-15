@@ -1,6 +1,7 @@
 seed=$1
+dir=$2
 
-cd /scratch5/anlevin/powheg_generation/vbf_wp_wp/CMSSW_7_1_14/src/POWHEG-BOX/vbf_wp_wp/testrun/
+cd $dir
 
 eval `scramv1 runtime -sh`
 
