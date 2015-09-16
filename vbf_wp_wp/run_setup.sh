@@ -29,6 +29,10 @@ svn co --username anonymous --password anonymous svn://powhegbox.mib.infn.it/tru
 
 cd -
 
+wget https://raw.githubusercontent.com/AndrewLevin/genproductions/master/bin/Powheg/patches/pdfweights.patch
+
+patch -l -p0 -i pdfweights.patch
+
 cd POWHEG-BOX/vbf_wp_wp/
 
 mkdir -p include
