@@ -1,27 +1,46 @@
-parallelstage=$1
-xgriditeration=$2
+sign=$1
+parallelstage=$2
+xgriditeration=$3
 
 if [ -z "$1" ]
+then
+    echo "the sign must be set"
+fi
+
+if [ "$sign" != "+" ] && [ "$sign" != "-" ]
+then
+    echo "sign must be + or -, exiting"
+    exit
+fi
+
+if [ "$sign" == "+" ]
+then
+    sign_label=wp_wp
+else
+    sign_label=wm_wm
+fi
+
+if [ -z "$2" ]
 then
     echo "the parellel stage needs to be set, exiting"
     exit
 else
     if (( $parallelstage == 1 ))
     then
-	if [ -z "$2" ]
+	if [ -z "$3" ]
 	    then
 	    echo "the xgriditeration needs to be set for parallelstage 1, exiting"
 	    exit
 	fi
-	wget https://raw.githubusercontent.com/AndrewLevin/genproductions/wpwp_powheg/bin/Powheg/production/wp_wp_j_j_ewk/powheg.input.wp_wp.parallelstage${parallelstage}.xgriditeration${xgriditeration} -O CMSSW_7_1_14/src/POWHEG-BOX/vbf_wp_wp/testrun/powheg.input
+	wget https://raw.githubusercontent.com/AndrewLevin/genproductions/for_wp_wp_powheg_production/bin/Powheg/production/vbf_wp_wp/powheg.input.${sign_label}.parallelstage${parallelstage}.xgriditeration${xgriditeration} -O CMSSW_7_1_14/src/POWHEG-BOX/vbf_wp_wp/testrun/powheg.input
 	stderr_stdout_filename_base=stderr_stdout_parallelstage${parallelstage}_xgriditeration${xgriditeration}
 	log_filename_base=log_parallelstage${parallelstage}_xgriditeration${xgriditeration}
     else
-	if ! [ -z "$2" ]
+	if ! [ -z "$3" ]
 	then
 	    echo "the xgriditeration should not be set for parallelstage greater than 1, exiting"
 	fi
-	wget https://raw.githubusercontent.com/AndrewLevin/genproductions/wpwp_powheg/bin/Powheg/production/wp_wp_j_j_ewk/powheg.input.wp_wp.parallelstage${parallelstage} -O CMSSW_7_1_14/src/POWHEG-BOX/vbf_wp_wp/testrun/powheg.input
+	wget https://raw.githubusercontent.com/AndrewLevin/genproductions/for_wp_wp_powheg_production/bin/Powheg/production/vbf_wp_wp/powheg.input.${sign_label}.parallelstage${parallelstage} -O CMSSW_7_1_14/src/POWHEG-BOX/vbf_wp_wp/testrun/powheg.input
 	stderr_stdout_filename_base=stderr_stdout_parallelstage${parallelstage}
 	log_filename_base=log_parallelstage${parallelstage}
     fi
