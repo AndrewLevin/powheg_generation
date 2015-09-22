@@ -32,7 +32,7 @@ else
 	    echo "the xgriditeration needs to be set for parallelstage 1, exiting"
 	    exit
 	fi
-	wget https://raw.githubusercontent.com/AndrewLevin/genproductions/for_wp_wp_powheg_production/bin/Powheg/production/vbf_wp_wp/powheg.input.${sign_label}.parallelstage${parallelstage}.xgriditeration${xgriditeration} -O CMSSW_7_1_14/src/POWHEG-BOX/vbf_wp_wp/testrun/powheg.input
+	wget https://raw.githubusercontent.com/AndrewLevin/genproductions/for_wp_wp_powheg_production/bin/Powheg/production/vbf_wp_wp/powheg.input.${sign_label}.parallelstage${parallelstage}.xgriditeration${xgriditeration} -O ${sign_label}/CMSSW_7_1_14/src/POWHEG-BOX/vbf_wp_wp/testrun/powheg.input
 	stderr_stdout_filename_base=stderr_stdout_parallelstage${parallelstage}_xgriditeration${xgriditeration}
 	log_filename_base=log_parallelstage${parallelstage}_xgriditeration${xgriditeration}
     else
@@ -40,7 +40,7 @@ else
 	then
 	    echo "the xgriditeration should not be set for parallelstage greater than 1, exiting"
 	fi
-	wget https://raw.githubusercontent.com/AndrewLevin/genproductions/for_wp_wp_powheg_production/bin/Powheg/production/vbf_wp_wp/powheg.input.${sign_label}.parallelstage${parallelstage} -O CMSSW_7_1_14/src/POWHEG-BOX/vbf_wp_wp/testrun/powheg.input
+	wget https://raw.githubusercontent.com/AndrewLevin/genproductions/for_wp_wp_powheg_production/bin/Powheg/production/vbf_wp_wp/powheg.input.${sign_label}.parallelstage${parallelstage} -O ${sign_label}/CMSSW_7_1_14/src/POWHEG-BOX/vbf_wp_wp/testrun/powheg.input
 	stderr_stdout_filename_base=stderr_stdout_parallelstage${parallelstage}
 	log_filename_base=log_parallelstage${parallelstage}
     fi
@@ -56,7 +56,7 @@ while((i<=n_jobs)); do
 	cat > submit.cmd <<EOF
 universe = vanilla
 Executable = `pwd`/run_pwhg_main.sh
-Arguments = "$i `pwd`/CMSSW_7_1_14/src/POWHEG-BOX/vbf_wp_wp/testrun/"
+Arguments = "$i `pwd`/${sign_label}/CMSSW_7_1_14/src/POWHEG-BOX/vbf_wp_wp/testrun/"
 GetEnv = True
 Requirements = (Arch == "X86_64") && (OpSys == "LINUX") && (HasFileTransfer) && (OpSysAndVer == "SL6")
 Should_Transfer_Files = YES

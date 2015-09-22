@@ -1,3 +1,26 @@
+sign=$1
+
+if [ -z "$1" ]
+then
+    echo "the sign must be set"
+fi
+
+if [ "$sign" != "+" ] && [ "$sign" != "-" ]
+then
+    echo "sign must be + or -, exiting"
+    exit
+fi
+
+if [ "$sign" == "+" ]
+then
+    sign_label=wp_wp
+else
+    sign_label=wm_wm
+fi
+
+mkdir ${sign_label}
+cd ${sign_label}
+
 export SCRAM_ARCH=slc6_amd64_gcc481
 scram p CMSSW CMSSW_7_1_14
 cd CMSSW_7_1_14/src
