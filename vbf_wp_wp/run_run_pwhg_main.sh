@@ -47,7 +47,7 @@ else
 fi
 
 
-n_jobs=300
+n_jobs=200
 
 i=1
 
