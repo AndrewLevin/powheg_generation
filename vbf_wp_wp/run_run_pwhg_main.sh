@@ -33,16 +33,16 @@ else
 	    exit
 	fi
 	wget https://raw.githubusercontent.com/AndrewLevin/genproductions/for_wp_wp_powheg_production/bin/Powheg/production/vbf_wp_wp/powheg.input.${sign_label}.parallelstage${parallelstage}.xgriditeration${xgriditeration} -O ${sign_label}/CMSSW_7_1_14/src/POWHEG-BOX/vbf_wp_wp/testrun/powheg.input
-	stderr_stdout_filename_base=stderr_stdout_parallelstage${parallelstage}_xgriditeration${xgriditeration}
-	log_filename_base=log_parallelstage${parallelstage}_xgriditeration${xgriditeration}
+	stderr_stdout_filename_base=stderr_stdout_${sign_label}_parallelstage${parallelstage}_xgriditeration${xgriditeration}
+	log_filename_base=log_${sign_label}_parallelstage${parallelstage}_xgriditeration${xgriditeration}
     else
 	if ! [ -z "$3" ]
 	then
 	    echo "the xgriditeration should not be set for parallelstage greater than 1, exiting"
 	fi
 	wget https://raw.githubusercontent.com/AndrewLevin/genproductions/for_wp_wp_powheg_production/bin/Powheg/production/vbf_wp_wp/powheg.input.${sign_label}.parallelstage${parallelstage} -O ${sign_label}/CMSSW_7_1_14/src/POWHEG-BOX/vbf_wp_wp/testrun/powheg.input
-	stderr_stdout_filename_base=stderr_stdout_parallelstage${parallelstage}
-	log_filename_base=log_parallelstage${parallelstage}
+	stderr_stdout_filename_base=stderr_stdout_${sign_label}_parallelstage${parallelstage}
+	log_filename_base=log_${sign_label}_parallelstage${parallelstage}
     fi
 fi
 
