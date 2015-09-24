@@ -1,6 +1,11 @@
 seed=$1
 dir=$2
 
+echo "\$seed = "
+echo $seed
+echo "\$dir = "
+echo $dir
+
 cd $dir
 
 eval `scramv1 runtime -sh`
